@@ -1,2 +1,0 @@
-# ITISDEV
-Machine Project
