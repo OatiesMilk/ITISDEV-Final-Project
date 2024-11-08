@@ -12,7 +12,7 @@
 <h1>Main Menu</h1>
 
 <?php 
-    echo "<script>alert('Login successful! Welcome, $username');</script>"; 
+    echo "<script>alert('Login successful. Welcome, " . $_SESSION['firstname'] . "!');</script>"; 
 ?>
 <!-- end of content -->
 

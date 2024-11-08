@@ -24,8 +24,11 @@
         $result = mysqli_query($conn, $query);
 
         if ($result && mysqli_num_rows($result) > 0) {
-            echo "<script>alert('Login successful! Welcome, $username');</script>";
-            $_SESSION['username'] = $username;
+            $user = mysqli_fetch_assoc($result);
+            $_SESSION['firstname'] = $user['firstname']; // Getting the firstname of the account matched
+
+            echo "<script>alert('Login successful. Welcome, " . $user['firstname'] . "!');</script>";
+            
             header("Location: main_menu.php");
         } else {
             echo "<script>alert('Invalid username or password!');</script>";
