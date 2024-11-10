@@ -1,0 +1,18 @@
+/* Styling for Cart Page */
+.cart-item-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.checkout-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.checkout-button:hover {
+    background-color: #45a049;
+}

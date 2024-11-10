@@ -1,6 +1,10 @@
 <?php
-    session_start();
+    // Start the session only if it hasn't already been started
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
+    // Check if the session has the 'username' set
     if (isset($_SESSION['username'])) {
         $username = $_SESSION['username'];
     } else {
@@ -16,3 +20,6 @@
     <title><?php echo isset($title) ? $title : 'Default Title'; ?></title>
 </head>
 <body>
+    <!-- The body of your page goes here -->
+</body>
+</html>
