@@ -60,6 +60,12 @@ form input[type="submit"]:hover {
     flex-wrap: nowrap; /* Prevent wrapping to the next line */
 }
 
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /* Product card styling */
 .product-card {
     display: flex; /* Enables flex layout for the card */

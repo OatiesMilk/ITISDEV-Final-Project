@@ -83,18 +83,20 @@ $total_pages = ceil($total_products / $limit);
                 $image_url = isset($row['image_url']) ? $row['image_url'] : 'images/product_image.png'; // Fallback image
                 
                 echo "<div class='product-card'>
-                        <img src='" . htmlspecialchars($image_url) . "' alt='" . htmlspecialchars($row['name']) . "' class='product-image'>
-                        <h2>" . htmlspecialchars($row['name']) . "</h2>
-                        <p>" . htmlspecialchars($row['description']) . "</p> <!-- Full description -->
-                        <p>$" . number_format($row['price'], 2) . "</p>
-                        
-                        <!-- Add to Cart Button -->
-                        <form action='add_to_cart.php' method='POST'>
-                            <a href='product_detail.php?id=" . $row['product_id'] . "' class='view-details'>View Details</a>
-                            <input type='hidden' name='product_id' value='" . $row['product_id'] . "'>
-                            <input type='submit' value='Add to Cart' class='add-to-cart'>
-                        </form>
-                    </div>";
+                    <img src='" . htmlspecialchars($image_url) . "' alt='" . htmlspecialchars($row['name']) . "' class='product-image'>
+                        <div class='product-info'>
+                            <h2 class='product-name'>" . htmlspecialchars($row['name']) . "</h2>
+                            <p class='product-price'>$" . number_format($row['price'], 2) . "</p>
+                        </div>
+                    <p>" . htmlspecialchars($row['description']) . "</p>
+                    
+                    <!-- Add to Cart Button -->
+                    <form action='add_to_cart.php' method='POST'>
+                        <a href='product_detail.php?id=" . $row['product_id'] . "' class='view-details'>View Details</a>
+                        <input type='hidden' name='product_id' value='" . $row['product_id'] . "'>
+                        <input type='submit' value='Add to Cart' class='add-to-cart'>
+                    </form>
+                </div>";
             }
         } else {
             echo "<p>No products found.</p>";
