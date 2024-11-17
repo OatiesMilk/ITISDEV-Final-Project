@@ -1,6 +1,8 @@
 <?php
 session_start();
+$title = "Your Shopping Cart";
 include('config.php');
+include('dependencies/header.php');
 
 // Handle updates or item removal from the cart
 if (isset($_GET['action']) && isset($_GET['id'])) {
@@ -39,15 +41,10 @@ if (!empty($_SESSION['cart'])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Shopping Cart</title>
-    <link rel="stylesheet" href="styles/cart.css"> <!-- Your CSS -->
-</head>
-<body>
+<style>
+    <?php include('css/cart.css'); ?>
+</style>
+
     <h1>Your Shopping Cart</h1>
 
     <!-- Debugging: Check the session contents -->

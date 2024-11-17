@@ -30,7 +30,8 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details</title>
-    <link rel="stylesheet" href="styles/product_detail.css"> <!-- Link to your CSS -->
+    <link rel="stylesheet" href="css/product_detail.css">
+    <link rel="stylesheet" href="css/back_button.css">
 </head>
 <body>
 
@@ -38,17 +39,17 @@ if (isset($_GET['id'])) {
 
     <div class="product-detail">
         <div class="product-image">
-            <img src="<?php echo $product['image_url']; ?>" alt="<?php echo $product['name']; ?>">
+            <!-- <img src="<?php echo $product['image_url']; ?>" alt="<?php echo $product['name']; ?>"> -->
         </div>
         
         <div class="product-info">
-            <h2><?php echo $product['name']; ?></h2>
+            <p><strong><?php echo $product['name']; ?></strong></p>
             <p><strong>Category:</strong> <?php echo $product['category']; ?></p>
             <p><strong>Description:</strong> <?php echo nl2br($product['description']); ?></p>
             <p><strong>Price:</strong> $<?php echo number_format($product['price'], 2); ?></p>
             <p><strong>Stock:</strong> <?php echo $product['stock']; ?> left</p>
             
-            <!-- Add to Cart Button (Optional) -->
+            <!-- Add to Cart Button -->
             <form method="POST" action="add_to_cart.php">
                 <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
                 <input type="number" name="quantity" value="1" min="1" max="<?php echo $product['stock']; ?>" required>
@@ -57,10 +58,15 @@ if (isset($_GET['id'])) {
         </div>
     </div>
 
+    <!-- Back Button -->
+    <div class="back-button">
+        <button onclick="history.back()">Back</button>
+    </div>
+
     <?php
     mysqli_close($conn);
-    include('dependencies/footer.php');
     ?>
 
 </body>
 </html>
+

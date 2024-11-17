@@ -1,10 +1,8 @@
-/* General body styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    padding: 1%;
 }
 
 /* Container for the whole page */
@@ -50,15 +48,24 @@ form input[type="submit"]:hover {
 
 /* Product list container */
 .product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    justify-items: center;
-    padding: 10px;
+    display: flex; /* Use flexbox for horizontal layout */
+    gap: 10px; /* Space between products */
+    justify-content: center; /* Center the products within the container */
+    padding: 2%;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: #C9E6F0;
+    width: fit-content; /* Adjust the container width to fit the products */
+    margin: 0 auto; /* Center the container on the page */
+    flex-wrap: nowrap; /* Prevent wrapping to the next line */
 }
 
 /* Product card styling */
 .product-card {
+    display: flex; /* Enables flex layout for the card */
+    flex-direction: column; /* Stacks children vertically */
+    justify-content: space-between; /* Ensures content is spaced evenly with buttons at the bottom */
+    padding: 2%;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -75,9 +82,10 @@ form input[type="submit"]:hover {
 
 /* Product image styling */
 .product-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+    width: 100%; /* Makes the image take the full width of the parent div */
+    height: auto; /* Maintains the aspect ratio of the image */
+    object-fit: cover; /* Ensures the image fills the container without distortion */
+    border-radius: 5px;
 }
 
 /* Product info styling */
@@ -94,6 +102,14 @@ form input[type="submit"]:hover {
     margin: 10px 0;
 }
 
+/* Buttons container */
+.product-card form {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto; /* Push buttons to the bottom of the card */
+}
+
+/* View Details button */
 .product-card .view-details {
     text-align: center;
     display: block;
@@ -102,11 +118,28 @@ form input[type="submit"]:hover {
     color: white;
     border-radius: 5px;
     text-decoration: none;
-    margin: 10px 0;
+    margin-top: 10px;
 }
 
 .product-card .view-details:hover {
     background-color: #2980b9;
+}
+
+/* Add to Cart button */
+.product-card .add-to-cart {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+.product-card .add-to-cart:hover {
+    background-color: #45a049;
 }
 
 /* No products found message */
@@ -125,6 +158,8 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+/* Pagination styling */
 .pagination {
     text-align: center;
     margin-top: 20px;

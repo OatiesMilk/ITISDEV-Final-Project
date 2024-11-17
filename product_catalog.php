@@ -1,10 +1,11 @@
 <?php
 session_start();
+$title = "Product Catalog";
 include('config.php');
 include('dependencies/header.php');
 
 // Set the number of products per page
-$limit = 10;
+$limit = 3;
 
 // Get the current page from URL, default is 1
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -16,6 +17,17 @@ $category = isset($_GET['category']) ? $_GET['category'] : '';
 
 // Prepare query to fetch products with pagination based on search and category
 $query = "SELECT * FROM products WHERE name LIKE ? AND category LIKE ? LIMIT ? OFFSET ?";
+
+// Query to fetch distinct categories from the products table
+$category_query = "SELECT DISTINCT category FROM products";
+$category_result = mysqli_query($conn, $category_query);
+
+$categories = [];
+if ($category_result && mysqli_num_rows($category_result) > 0) {
+    while ($cat_row = mysqli_fetch_assoc($category_result)) {
+        $categories[] = $cat_row['category'];
+    }
+}
 
 // Prepare statement to prevent SQL injection
 $stmt = mysqli_prepare($conn, $query);
@@ -38,15 +50,10 @@ $total_products = $total_row['total'];
 $total_pages = ceil($total_products / $limit);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Catalog</title>
-    <link rel="stylesheet" href="styles/product_catalog.css"> <!-- Link to your CSS -->
-</head>
-<body>
+<style>
+    <?php include('css/footer.css'); ?>
+    <?php include('css/product_catalog.css'); ?>
+</style>
 
     <h1>Product Catalog</h1>
 
@@ -57,9 +64,11 @@ $total_pages = ceil($total_products / $limit);
         <!-- Category filter dropdown -->
         <select name="category">
             <option value="">Select Category</option>
-            <option value="Nuts" <?php if ($category == 'Nuts') echo 'selected'; ?>>Nuts</option>
-            <option value="Dried Fruits" <?php if ($category == 'Dried Fruits') echo 'selected'; ?>>Dried Fruits</option>
-            <option value="Seeds" <?php if ($category == 'Seeds') echo 'selected'; ?>>Seeds</option>
+            <?php foreach ($categories as $cat): ?>
+                <option value="<?php echo htmlspecialchars($cat); ?>" <?php if ($category == $cat) echo 'selected'; ?>>
+                    <?php echo htmlspecialchars($cat); ?>
+                </option>
+            <?php endforeach; ?>
         </select>
         
         <input type="submit" value="Filter">
@@ -71,21 +80,21 @@ $total_pages = ceil($total_products / $limit);
         if ($result && mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
                 // Ensure that the 'image_url' field exists in the database for the product
-                $image_url = isset($row['image_url']) ? $row['image_url'] : 'default_image.jpg'; // Fallback image
+                $image_url = isset($row['image_url']) ? $row['image_url'] : 'images/product_image.png'; // Fallback image
                 
                 echo "<div class='product-card'>
                         <img src='" . htmlspecialchars($image_url) . "' alt='" . htmlspecialchars($row['name']) . "' class='product-image'>
                         <h2>" . htmlspecialchars($row['name']) . "</h2>
-                        <p>" . htmlspecialchars(substr($row['description'], 0, 100)) . "...</p>
+                        <p>" . htmlspecialchars($row['description']) . "</p> <!-- Full description -->
                         <p>$" . number_format($row['price'], 2) . "</p>
-                        <a href='product_detail.php?id=" . $row['product_id'] . "' class='view-details'>View Details</a>
                         
                         <!-- Add to Cart Button -->
                         <form action='add_to_cart.php' method='POST'>
+                            <a href='product_detail.php?id=" . $row['product_id'] . "' class='view-details'>View Details</a>
                             <input type='hidden' name='product_id' value='" . $row['product_id'] . "'>
                             <input type='submit' value='Add to Cart' class='add-to-cart'>
                         </form>
-                      </div>";
+                    </div>";
             }
         } else {
             echo "<p>No products found.</p>";
@@ -118,7 +127,6 @@ $total_pages = ceil($total_products / $limit);
     mysqli_stmt_close($stmt);
     mysqli_stmt_close($total_stmt);
     mysqli_close($conn);
-    include('dependencies/footer.php');
     ?>
 
 </body>
