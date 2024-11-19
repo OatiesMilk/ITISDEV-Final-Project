@@ -15,11 +15,17 @@ if (isset($_POST['product_id']) && isset($_POST['quantity'])) {
         exit;
     }
     
-    // Check if the product exists in the database
+    // Check if the product exists in the database and fetch its details
     $query = "SELECT * FROM products WHERE product_id = '$product_id' LIMIT 1";
     $result = mysqli_query($conn, $query);
     
     if (mysqli_num_rows($result) > 0) {
+        $product = mysqli_fetch_assoc($result);
+
+        // Extract product details
+        $price = $product['price'];
+        $name = $product['name']; // Optional: If you want to display the name in the cart
+        
         // Check if the cart session exists, if not create one
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
@@ -27,11 +33,18 @@ if (isset($_POST['product_id']) && isset($_POST['quantity'])) {
 
         // Add product to cart
         if (isset($_SESSION['cart'][$product_id])) {
-            // If the product already exists in the cart, update the quantity
-            $_SESSION['cart'][$product_id] += $quantity;
+            // If the product already exists in the cart, update the quantity and recalculate the total price
+            $_SESSION['cart'][$product_id]['quantity'] += $quantity;
+            $_SESSION['cart'][$product_id]['total_price'] = $_SESSION['cart'][$product_id]['quantity'] * $price;
         } else {
-            // If the product is not in the cart, add it
-            $_SESSION['cart'][$product_id] = $quantity;
+            // If the product is not in the cart, add it with details
+            $_SESSION['cart'][$product_id] = [
+                'product_id' => $product_id,
+                'name' => $name, // Optional
+                'price' => $price,
+                'quantity' => $quantity,
+                'total_price' => $quantity * $price
+            ];
         }
 
         // Redirect back to the product catalog

@@ -1,7 +1,7 @@
 <?php
 $database = "itisdev";
 $localhost = "localhost";
-$conn = mysqli_connect($localhost, "root", "p@ssword", $database); // Empty password
+$conn = mysqli_connect($localhost, "root", "", $database); // Empty password
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }

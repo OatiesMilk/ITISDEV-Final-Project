@@ -1,5 +1,6 @@
 <?php
 session_start();
+// session_unset();
 $title = "Your Shopping Cart";
 include('config.php');
 include('dependencies/header.php');
@@ -16,7 +17,9 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         // Sanitize and validate quantity
         $quantity = (int)$_GET['quantity'];
         if ($quantity > 0) {
+            // Update quantity and recalculate total price for the item
             $_SESSION['cart'][$product_id]['quantity'] = $quantity;
+            $_SESSION['cart'][$product_id]['total_price'] = $quantity * $_SESSION['cart'][$product_id]['price'];
         } else {
             // If quantity is invalid, remove the product
             unset($_SESSION['cart'][$product_id]);
@@ -24,12 +27,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     }
 }
 
-// Ensure that $_SESSION['cart'] is an array
-if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart'])) {
-    $_SESSION['cart'] = [];
-}
-
-// Calculate total price
+// Calculate total price after handling cart updates
 $total_price = 0;
 if (!empty($_SESSION['cart'])) {
     foreach ($_SESSION['cart'] as $product_id => $item) {
@@ -51,7 +49,7 @@ if (!empty($_SESSION['cart'])) {
     <pre>
     <?php
     // Uncomment for debugging if needed
-    // var_dump($_SESSION['cart']);
+    print_r($_SESSION['cart']);
     ?>
     </pre>
 
@@ -71,7 +69,7 @@ if (!empty($_SESSION['cart'])) {
                 <?php foreach ($_SESSION['cart'] as $product_id => $item): ?>
                     <?php if (is_array($item)): ?>
                         <tr>
-                            <td><img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>" class="product-image"></td>
+                            <td><img src="" alt="Product Image" class="product-image"></td>
                             <td>$<?= number_format($item['price'], 2) ?></td>
                             <td>
                                 <form action="view_cart.php" method="GET">

@@ -4,6 +4,16 @@ include('config.php');
 
 // Proceed with checkout logic
 // Here, you would typically process payment, shipping, and finalize the order.
+
+// Initialize total price
+$total_price = 0;
+
+// Calculate total price if the cart is not empty
+if (!empty($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $item) {
+        $total_price += $item['price'] * $item['quantity'];
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +40,7 @@ include('config.php');
             <tbody>
                 <?php foreach ($_SESSION['cart'] as $item): ?>
                     <tr>
-                        <td><img src="<?= $item['image_url'] ?>" alt="<?= $item['name'] ?>" class="product-image"></td>
+                        <td><img src="" alt="Product Image" class="product-image"></td>
                         <td>$<?= number_format($item['price'], 2) ?></td>
                         <td><?= $item['quantity'] ?></td>
                         <td>$<?= number_format($item['price'] * $item['quantity'], 2) ?></td>
@@ -45,6 +55,7 @@ include('config.php');
             <!-- Here you would collect shipping and payment information -->
             <input type="submit" value="Complete Purchase">
         </form>
+        <a href="main_menu.php" class="btn">Go to Main Menu</a>
     <?php else: ?>
         <p>Your cart is empty. Add items to your cart before proceeding to checkout.</p>
     <?php endif; ?>

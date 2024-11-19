@@ -83,19 +83,23 @@ $total_pages = ceil($total_products / $limit);
                 $image_url = isset($row['image_url']) ? $row['image_url'] : 'images/product_image.png'; // Fallback image
                 
                 echo "<div class='product-card'>
-                    <img src='" . htmlspecialchars($image_url) . "' alt='" . htmlspecialchars($row['name']) . "' class='product-image'>
+                    <img src='" . htmlspecialchars($image_url) . "' class='product-image'>
                         <div class='product-info'>
                             <h2 class='product-name'>" . htmlspecialchars($row['name']) . "</h2>
                             <p class='product-price'>$" . number_format($row['price'], 2) . "</p>
                         </div>
                     <p>" . htmlspecialchars($row['description']) . "</p>
-                    
+
                     <!-- Add to Cart Button -->
-                    <form action='add_to_cart.php' method='POST'>
+                    <form action='add_to_cart.php' method='POST' onsubmit='return confirmStockAlert(this)'>
                         <a href='product_detail.php?id=" . $row['product_id'] . "' class='view-details'>View Details</a>
+                        <input type='hidden' name='product_name' value='" . htmlspecialchars($row['name']) . "'>
                         <input type='hidden' name='product_id' value='" . $row['product_id'] . "'>
+                        <input type='hidden' name='price' value=" . $row['price'] . "'>
+                        <input type='hidden' name='quantity' value='1'>
                         <input type='submit' value='Add to Cart' class='add-to-cart'>
                     </form>
+
                 </div>";
             }
         } else {
@@ -132,4 +136,27 @@ $total_pages = ceil($total_products / $limit);
     ?>
 
 </body>
+
+<script>
+    function confirmStockAlert(form) {
+        // Get product details from the form
+        const productId = form.product_id.value;
+        const productName = form.product_name.value; // Get the product name
+        const quantity = parseInt(form.quantity.value); // Convert to an integer
+        const price = parseFloat(form.price.value); // Convert to a floating-point number
+        const totalPrice = price * quantity; // Calculate total price
+
+        // Show the alert with product details
+        alert(
+            "Product Name: " + productName + 
+            "\nProduct ID: " + productId + 
+            "\nQuantity: " + quantity + 
+            "\nTotal Price: $" + totalPrice.toFixed(2)
+        );
+
+        // Return true to allow the form submission
+        return true;
+    }
+</script>
+
 </html>

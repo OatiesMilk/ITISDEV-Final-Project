@@ -50,8 +50,9 @@ if (isset($_GET['id'])) {
             <p><strong>Stock:</strong> <?php echo $product['stock']; ?> left</p>
             
             <!-- Add to Cart Button -->
-            <form method="POST" action="add_to_cart.php">
+            <form method="POST" action="add_to_cart.php" onsubmit="return confirmStockAlert(this)">
                 <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                <input type="hidden" name="price" value="<?php echo $product['price']; ?>" required>
                 <input type="number" name="quantity" value="1" min="1" max="<?php echo $product['stock']; ?>" required>
                 <input type="submit" value="Add to Cart">
             </form>
@@ -68,5 +69,22 @@ if (isset($_GET['id'])) {
     ?>
 
 </body>
+
+<script>
+    function confirmStockAlert(form) {
+        // Get the product ID and quantity
+        const productId = form.product_id.value;
+        const quantity = parseInt(form.quantity.value); // Convert to an integer
+        const price = parseFloat(form.price.value); // Convert to a floating-point number
+        const totalPrice = price * quantity; // Calculate total price
+
+        // Show the alert with product ID, quantity, and total price
+        alert("Product ID: " + productId + "\nQuantity: " + quantity + "\nTotal Price: $" + totalPrice.toFixed(2));
+
+        // Return true to allow the form submission
+        return true;
+    }
+</script>
+
 </html>
 
