@@ -1,7 +1,10 @@
 <?php
 session_start();
+$title = "Product Details";
 include('config.php');
 include('dependencies/header.php');
+
+
 
 // Check if product ID is passed via URL
 if (isset($_GET['id'])) {
@@ -24,16 +27,12 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details</title>
-    <link rel="stylesheet" href="css/product_detail.css">
-    <link rel="stylesheet" href="css/back_button.css">
-</head>
-<body>
+<style>
+    <?php 
+        include('css/product_detail.css');
+        include('css/back_button.css'); 
+    ?>
+</style>
 
     <h1>Product Details</h1>
 

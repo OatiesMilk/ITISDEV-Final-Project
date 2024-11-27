@@ -51,7 +51,6 @@ $total_pages = ceil($total_products / $limit);
 ?>
 
 <style>
-    <?php include('css/footer.css'); ?>
     <?php include('css/product_catalog.css'); ?>
 </style>
 

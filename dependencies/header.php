@@ -20,6 +20,3 @@
     <title><?php echo isset($title) ? $title : 'Default Title'; ?></title>
 </head>
 <body>
-    <!-- The body of your page goes here -->
-</body>
-</html>

@@ -25,3 +25,6 @@
 ?>
 
 <!-- End of Main Menu -->
+
+</body>
+</html>
