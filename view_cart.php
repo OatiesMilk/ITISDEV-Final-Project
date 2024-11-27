@@ -55,7 +55,7 @@ if (!empty($_SESSION['cart'])) {
 
     <!-- Display Cart Contents -->
     <?php if (!empty($_SESSION['cart'])): ?>
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <th>Product</th>

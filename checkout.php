@@ -28,10 +28,11 @@ if (!empty($_SESSION['cart'])) {
 
     <!-- Display Cart Contents for Review -->
     <?php if (!empty($_SESSION['cart'])): ?>
-        <table>
+        <table border="1">
             <thead>
                 <tr>
-                    <th>Product</th>
+                    <th>Image</th>
+                    <th>Name</th>
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total</th>
@@ -41,6 +42,7 @@ if (!empty($_SESSION['cart'])) {
                 <?php foreach ($_SESSION['cart'] as $item): ?>
                     <tr>
                         <td><img src="" alt="Product Image" class="product-image"></td>
+                        <td><?= $item['name'] ?></td>
                         <td>$<?= number_format($item['price'], 2) ?></td>
                         <td><?= $item['quantity'] ?></td>
                         <td>$<?= number_format($item['price'] * $item['quantity'], 2) ?></td>
@@ -52,7 +54,7 @@ if (!empty($_SESSION['cart'])) {
         <h3>Total: $<?= number_format($total_price, 2) ?></h3>
 
         <form method="POST" action="process_checkout.php">
-            <!-- Here you would collect shipping and payment information -->
+            <!-- Here you would collect payment information -->
             <input type="submit" value="Complete Purchase">
         </form>
         <a href="main_menu.php" class="btn">Go to Main Menu</a>

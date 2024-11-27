@@ -126,6 +126,7 @@ $total_pages = ceil($total_products / $limit);
     <!-- Cart Link -->
     <div class="cart-link">
         <a href="view_cart.php">View Cart</a>
+        <a href="main_menu.php">Return to Main Menu</a>
     </div>
 
     <?php

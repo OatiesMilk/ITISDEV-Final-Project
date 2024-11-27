@@ -19,13 +19,10 @@
     <a href="customer_support.php" class="menu-item">Customer Support</a>
     <a href="community.php" class="menu-item">Community</a>
     <a href="feedback.php" class="menu-item">Feedback</a>
+    <a href="account_logout.php" class="menu-item logout">Logout</a>
 </div>
 
 <?php
-    // Display welcome message
-    if (isset($_SESSION['firstname'])) {
-        echo "<script>alert('Login successful. Welcome, " . $_SESSION['firstname'] . "!');</script>";
-    }
 ?>
 
 <!-- End of Main Menu -->
