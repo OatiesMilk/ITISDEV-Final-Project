@@ -62,6 +62,22 @@ CREATE TABLE `orders` (
   `order_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table tickets
+-- 
+CREATE TABLE `tickets` (
+  `Ticket_ID` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  `Name` VARCHAR(100) NOT NULL,
+  `Email` VARCHAR(100) NOT NULL,
+  `Subject` VARCHAR(200) DEFAULT NULL,
+  `Message` TEXT NOT NULL,
+  `Status` ENUM('Open', 'In Progress', 'Closed') DEFAULT 'Open',
+  `Created_At` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- --------------------------------------------------------
 
 --
