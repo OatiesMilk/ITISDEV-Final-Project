@@ -1,6 +1,5 @@
 <?php
 session_start();
-// session_unset();
 $title = "Your Shopping Cart";
 include('config.php');
 include('dependencies/header.php');

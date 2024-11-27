@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <style>
-        <?php include('css/footer.css'); ?>
-        <?php include('css/account_login.css'); ?>
-    </style>
-</head>
-<body>
+<?php
+    session_start();
+    $title = "Account Login";
+    include('dependencies/header.php');
+    include('config.php');
+?>
+
+<style>
+    <?php include('css/account_login.css'); ?>
+</style>
 
 <?php
-    include('config.php');
-    include('dependencies/header.php');
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
@@ -27,10 +22,9 @@
             $user = mysqli_fetch_assoc($result);
             $_SESSION['firstname'] = $user['firstname'];
             $_SESSION['lastname'] = $user['lastname'];
+            $_SESSION['account_id'] = $user['account_id'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['mobile_num'] = $user['mobile_num'];
-
-            echo "<script>alert('Login successful. Welcome, " . $user['firstname'] . "!');</script>";
             
             header("Location: main_menu.php");
         } else {

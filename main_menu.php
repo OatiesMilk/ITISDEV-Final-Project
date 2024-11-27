@@ -5,7 +5,6 @@
 ?>
 
 <style>
-    <?php include('css/footer.css'); ?>
     <?php include('css/main_menu.css'); ?>
 </style>
 
@@ -26,7 +25,3 @@
 ?>
 
 <!-- End of Main Menu -->
-
-<?php
-    include('dependencies/footer.php');
-?>

@@ -2,6 +2,8 @@
 session_start();
 include('config.php');
 
+date_default_timezone_set('Asia/Manila');
+
 // Check if the cart is not empty
 if (!empty($_SESSION['cart'])) {
     // Retrieve customer information from session
@@ -35,8 +37,6 @@ if (!empty($_SESSION['cart'])) {
     if ($stmt->execute()) {
         // Clear the cart after successful order
         unset($_SESSION['cart']);
-
-        // Redirect to a thank-you page or order confirmation page
         header("Location: thank_you.php");
         exit();
     } else {
