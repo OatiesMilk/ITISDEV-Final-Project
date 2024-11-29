@@ -48,6 +48,7 @@ if (!empty($_SESSION['cart'])) {
     <pre>
     <?php
     // Uncomment for debugging if needed
+    printf("Remove this when done debugging: \n");
     print_r($_SESSION['cart']);
     ?>
     </pre>
