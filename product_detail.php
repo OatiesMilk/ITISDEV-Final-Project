@@ -33,6 +33,7 @@ if (isset($_GET['id'])) {
         include('css/back_button.css'); 
     ?>
 </style>
+<div class="container">
 
     <h1>Product Details</h1>
 
@@ -62,6 +63,7 @@ if (isset($_GET['id'])) {
     <div class="back-button">
         <button onclick="history.back()">Back</button>
     </div>
+</div>
 
     <?php
     mysqli_close($conn);

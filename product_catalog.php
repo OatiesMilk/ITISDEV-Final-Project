@@ -53,52 +53,62 @@ $total_pages = ceil($total_products / $limit);
 <style>
     <?php include('css/product_catalog.css'); ?>
 </style>
+<div class="container">
+    <h3>Product Catalog</h3>
 
-    <h1>Product Catalog</h1>
+    <!-- Cart Link -->
+    <div class="cart-link">
+        <a href="view_cart.php" class="btn-link">View Cart</a>
+        <a href="main_menu.php" class="btn-link">Return to Main Menu</a>
+    </div>
 
     <!-- Search and Category Filter Form -->
-    <form method="GET" action="product_catalog.php">
-        <input type="text" name="search" placeholder="Search products..." value="<?php echo htmlspecialchars($search); ?>">
-        
-        <!-- Category filter dropdown -->
-        <select name="category">
-            <option value="">Select Category</option>
-            <?php foreach ($categories as $cat): ?>
-                <option value="<?php echo htmlspecialchars($cat); ?>" <?php if ($category == $cat) echo 'selected'; ?>>
-                    <?php echo htmlspecialchars($cat); ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-        
-        <input type="submit" value="Filter">
-    </form>
+    <div class="search-filter-container">
+        <form method="GET" action="product_catalog.php">
+            <input type="text" name="search" placeholder="Search products..." value="<?php echo htmlspecialchars($search); ?>">
+            
+            <!-- Category filter dropdown -->
+            <select name="category">
+                <option value="">Select Category</option>
+                <?php foreach ($categories as $cat): ?>
+                    <option value="<?php echo htmlspecialchars($cat); ?>" <?php if ($category == $cat) echo 'selected'; ?>>
+                        <?php echo htmlspecialchars($cat); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            
+            <input type="submit" value="Filter">
+        </form>
+    </div>
 
     <!-- Display Products -->
     <div class="product-list">
         <?php
         if ($result && mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                // Ensure that the 'image_url' field exists in the database for the product
-                $image_url = isset($row['image_url']) ? $row['image_url'] : 'images/product_image.png'; // Fallback image
+                // Construct the image path
+                $image_name = isset($row['image_name']) ? $row['image_name'] : '';
+                $image_url = !empty($image_name) && file_exists("images/$image_name") 
+                    ? "images/" . htmlspecialchars($image_name) 
+                    : 'images/default_image.png';
                 
                 echo "<div class='product-card'>
-                    <img src='" . htmlspecialchars($image_url) . "' class='product-image'>
-                        <div class='product-info'>
-                            <h2 class='product-name'>" . htmlspecialchars($row['name']) . "</h2>
-                            <p class='product-price'>$" . number_format($row['price'], 2) . "</p>
-                        </div>
+                    <img src='" . $image_url . "' class='product-image'>
+                    <div class='product-info'>
+                        <h2 class='product-name'>" . htmlspecialchars($row['name']) . "</h2>
+                        <p class='product-price'>$" . number_format($row['price'], 2) . "</p>
+                    </div>
                     <p>" . htmlspecialchars($row['description']) . "</p>
 
                     <!-- Add to Cart Button -->
                     <form action='add_to_cart.php' method='POST' onsubmit='return confirmStockAlert(this)'>
-                        <a href='product_detail.php?id=" . $row['product_id'] . "' class='view-details'>View Details</a>
                         <input type='hidden' name='product_name' value='" . htmlspecialchars($row['name']) . "'>
                         <input type='hidden' name='product_id' value='" . $row['product_id'] . "'>
-                        <input type='hidden' name='price' value=" . $row['price'] . "'>
+                        <input type='hidden' name='price' value='" . $row['price'] . "'>
+                        <input type='hidden' name='image_name' value='" . htmlspecialchars($row['image_name']) . "'>
                         <input type='hidden' name='quantity' value='1'>
                         <input type='submit' value='Add to Cart' class='add-to-cart'>
                     </form>
-
                 </div>";
             }
         } else {
@@ -121,32 +131,27 @@ $total_pages = ceil($total_products / $limit);
             <a href="product_catalog.php?page=<?php echo $page + 1; ?>&search=<?php echo urlencode($search); ?>&category=<?php echo urlencode($category); ?>">Next</a>
         <?php endif; ?>
     </div>
+</div>
 
-    <!-- Cart Link -->
-    <div class="cart-link">
-        <a href="view_cart.php">View Cart</a>
-        <a href="main_menu.php">Return to Main Menu</a>
-    </div>
+<footer>
+    <p>&copy; 2024 goNuts - All Rights Reserved. Crafted with love for health and wellness.</p>
+</footer>
 
-    <?php
-    // Close database connection
-    mysqli_stmt_close($stmt);
-    mysqli_stmt_close($total_stmt);
-    mysqli_close($conn);
-    ?>
-
-</body>
+<?php
+// Close database connection
+mysqli_stmt_close($stmt);
+mysqli_stmt_close($total_stmt);
+mysqli_close($conn);
+?>
 
 <script>
     function confirmStockAlert(form) {
-        // Get product details from the form
         const productId = form.product_id.value;
-        const productName = form.product_name.value; // Get the product name
-        const quantity = parseInt(form.quantity.value); // Convert to an integer
-        const price = parseFloat(form.price.value); // Convert to a floating-point number
-        const totalPrice = price * quantity; // Calculate total price
+        const productName = form.product_name.value;
+        const quantity = parseInt(form.quantity.value);
+        const price = parseFloat(form.price.value);
+        const totalPrice = price * quantity;
 
-        // Show the alert with product details
         alert(
             "Product Name: " + productName + 
             "\nProduct ID: " + productId + 
@@ -154,9 +159,8 @@ $total_pages = ceil($total_products / $limit);
             "\nTotal Price: $" + totalPrice.toFixed(2)
         );
 
-        // Return true to allow the form submission
         return true;
     }
 </script>
-
+</body>
 </html>

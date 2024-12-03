@@ -1,43 +1,104 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0e68c;
+    margin: 0;
+    padding: 20px;
+    color: #2E7D32;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+h1 {
+    color: #2E7D32;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Product Detail */
 .product-detail {
     display: flex;
-    justify-content: start;
-    width: auto;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .product-image img {
-    height: auto;
+    max-width: 400px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .product-info {
-    /* max-width: 600px; */
-    border: 2px solid black;
-    border-radius: 20px;
-    padding: 1%;
+    flex-grow: 1;
+    border: 1px solid #2E7D32;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
 }
 
 .product-info p {
-    font-size: 1.2em;
-    color: black;
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #2E7D32;
 }
 
 .product-info form {
-    /* margin-top: 20px; */
+    margin-top: 20px;
 }
 
 .product-info input[type="number"] {
-    padding: 5px;
-    width: 60px;
+    padding: 10px;
+    width: 80px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
 }
 
 .product-info input[type="submit"] {
-    padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
     border: none;
     cursor: pointer;
     margin-top: 10px;
+    transition: background-color 0.3s ease;
 }
 
 .product-info input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Back Button */
+.back-button {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.back-button button {
+    background-color: #2E7D32;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-button button:hover {
     background-color: #45a049;
 }

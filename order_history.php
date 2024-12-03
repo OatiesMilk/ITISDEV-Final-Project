@@ -29,12 +29,17 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order History</title>
+
+    <style>
+        <?php include('css/order_history.css'); ?>
+    </style> 
 </head>
 <body>
-    <h1>Order History</h1>
+<div class="container">
+    <h1 class="order-history-title">Order History</h1>
     
     <?php if ($result->num_rows > 0): ?>
-        <table border="1">
+        <table class="order-table" border="1">
             <thead>
                 <tr>
                     <th>Order ID</th>
@@ -64,7 +69,10 @@ $result = $stmt->get_result();
         <p>You have no previous transactions.</p>
     <?php endif; ?>
 
-    <a href="main_menu.php">Return to Main Menu</a>
+    <div class="order-actions">
+        <a href="main_menu.php" class="btn-back">Return to Main Menu</a>
+    </div>
+</div>
 </body>
 </html>
 

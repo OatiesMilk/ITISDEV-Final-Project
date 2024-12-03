@@ -1,18 +1,234 @@
-/* Styling for Cart Page */
-.cart-item-image {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0e68c;
+    margin: 0;
+    padding: 20px;
+    color: #2E7D32;
 }
 
-.checkout-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #f9f6d1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h1 {
+    color: #2E7D32;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Title */
+.cart-title {
+    text-align: center;
+    color: #2E7D32;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+/* Cart Table */
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-table thead tr {
+    background-color: #2E7D32;
+    color: #fff;
+}
+
+.cart-table th, .cart-table td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.cart-table th {
+    font-size: 1rem;
+}
+
+.cart-table td {
+    font-size: 1rem;
+}
+
+.product-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
     border-radius: 5px;
 }
 
-.checkout-button:hover {
+/* Update Form */
+.update-form input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.update-form .btn-update {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.update-form .btn-update:hover {
     background-color: #45a049;
+}
+
+/* Remove Button */
+.btn-remove {
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-remove:hover {
+    background-color: #c0392b;
+}
+
+/* Cart Total */
+.cart-total {
+    text-align: right;
+    font-size: 1.2rem;
+    margin-top: 40px;
+}
+
+.checkout-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background-color: #45a049;
+}
+
+/* Empty Cart Message */
+.empty-cart {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #777;
+    margin-top: 30px;
+}
+
+/* Buttons */
+.btn-update,
+.btn-remove,
+.btn-checkout,
+.btn-continue {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-update {
+    background-color: #2E7D32;
+    color: white;
+}
+
+.btn-update:hover {
+    background-color: #45a049;
+}
+
+.btn-remove {
+    color: white;
+    background-color: #e74c3c;
+}
+
+.btn-remove:hover {
+    background-color: #c0392b;
+}
+
+.btn-checkout {
+    background-color: #2E7D32;
+    color: white;
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.btn-checkout:hover {
+    background-color: #388E3C;
+}
+
+.btn-continue {
+    background-color: #f39c12;
+    color: white;
+    text-align: center;
+}
+
+.btn-continue:hover {
+    background-color: #e67e22;
+}
+
+/* Links */
+.cart-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Cart Footer */
+.cart-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd; /* Optional for separation */
+}
+
+/* Cart Summary (Left Side) */
+.cart-summary {
+    flex: 1;
+    text-align: left;
+}
+
+/* Cart Actions (Right Side) */
+.cart-actions {
+    flex: 1;
+    text-align: right;
+}
+
+/* Adjust Buttons within Cart Actions */
+.cart-actions a {
+    margin-left: 10px;
+}
+
+/* Cart Summary */
+span {
+    color: #2E7D32;
+    font-size: larger;
 }

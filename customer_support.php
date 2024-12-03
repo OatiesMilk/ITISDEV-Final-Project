@@ -29,30 +29,29 @@ $conn->close();
     <?php include('css/customer_support.css'); ?>
 </style>
 
-    <div class="container">
-        <h1>Customer Support</h1>
-        <?php if (!empty($success_message)): ?>
-            <div class="success"><?php echo $success_message; ?></div>
-        <?php endif; ?>
-        <form method="POST" action="">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" 
-                value="<?php echo htmlspecialchars($_SESSION['firstname'] . ' ' . $_SESSION['lastname']); ?>" required>
+<div class="container">
+    <h1>Customer Support</h1>
+    <?php if (!empty($success_message)): ?>
+        <div class="success"><?php echo $success_message; ?></div>
+    <?php endif; ?>
+    <form method="POST" action="">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" 
+            value="<?php echo htmlspecialchars($_SESSION['firstname'] . ' ' . $_SESSION['lastname']); ?>" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" 
-                value="<?php echo htmlspecialchars($_SESSION['email']); ?>" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" 
+            value="<?php echo htmlspecialchars($_SESSION['email']); ?>" required>
 
-            <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" required>
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
 
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-
-    <a href="main_menu.php">Return to Main Menu</a>
+        <button type="submit" class="btn-submit">Submit</button>
+    </form>
+    <a href="main_menu.php" class="btn-back">Return to Main Menu</a>
+</div>
 </body>
 </html>

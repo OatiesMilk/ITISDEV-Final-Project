@@ -9,8 +9,14 @@
 </style>
 
 <!-- Main Menu Content -->
-<h1>Welcome to goNuts!</h1>
-<p>Your Health and Wellness Shopping Experience</p>
+<section class="banner">
+    <img src="images/1.jpg" alt="GoNuts Banner" class="banner-image">
+    <div class="banner-text">
+        <h1>Welcome to goNuts!</h1>
+        <p>Your Health and Wellness Shopping Experience</p>
+        <a href="product_catalog.php" class="cta-button">Shop Now</a>
+    </div>
+</section>
 
 <div class="menu-options">
     <a href="product_catalog.php" class="menu-item">Product Catalog</a>
@@ -21,7 +27,12 @@
     <a href="account_logout.php" class="menu-item logout">Logout</a>
 </div>
 
+<footer>
+    <p>&copy; 2024 goNuts - All Rights Reserved. Crafted with love for health and wellness.</p>
+</footer>
+
 <?php
+
 ?>
 
 <!-- End of Main Menu -->

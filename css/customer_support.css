@@ -1,45 +1,69 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0e68c;
     margin: 0;
-    padding: 0;
+    padding: 20px;
+    color: #2E7D32; /* Matches main menu text color */
 }
+
+/* Container */
 .container {
-    width: 60%;
-    margin: 30px auto;
-    background: #fff;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #f9f6d1;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* Header */
 h1 {
     text-align: center;
-    color: #333;
+    font-size: 2.5rem;
+    color: #2E7D32; /* Matches main menu text color */
+    margin-bottom: 20px;
 }
+
+/* Form */
 form {
     display: flex;
     flex-direction: column;
 }
+
 label {
     margin-bottom: 5px;
     font-weight: bold;
+    color: #2E7D32; /* Matches main menu text color */
 }
-input, textarea, button {
+
+input, textarea {
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
+    background-color: #fff;
+    color: #2E7D32;
 }
-button {
-    background-color: #007bff;
+
+/* Button */
+.btn-submit {
+    background-color: #2E7D32;
     color: white;
+    padding: 10px 15px;
+    font-size: 16px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
-button:hover {
-    background-color: #0056b3;
+
+.btn-submit:hover {
+    background-color: #45a049;
 }
+
+/* Success Message */
 .success {
     margin-top: 20px;
     padding: 10px;
@@ -47,4 +71,23 @@ button:hover {
     color: #155724;
     border: 1px solid #c3e6cb;
     border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Back Button */
+.btn-back {
+    display: inline-block;
+    background-color: #f39c12;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-back:hover {
+    background-color: #e67e22;
 }
