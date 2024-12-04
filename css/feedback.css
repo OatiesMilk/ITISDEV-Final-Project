@@ -1,0 +1,90 @@
+/* feedback.css */
+
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #495057;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+h2, h4 {
+    font-weight: normal;
+    color: #343a40;
+}
+
+/* Form styling */
+.feedback-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-form .form-label {
+    font-weight: bold;
+}
+
+.feedback-form textarea {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.feedback-form button {
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.feedback-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Feedback List Styles */
+.feedback-list {
+    margin-top: 30px;
+}
+
+.feedback-item {
+    background-color: #f1f3f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.feedback-item:hover {
+    transform: translateY(-5px);
+}
+
+.feedback-item p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.feedback-item .text-muted {
+    color: #6c757d !important;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
