@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2024 at 08:24 AM
+-- Generation Time: Dec 04, 2024 at 04:18 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -26,11 +26,6 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `accounts`
 --
--- Create the database if it doesn’t exist
-CREATE DATABASE IF NOT EXISTS itisdev;
-
--- Select the database to use
-USE itisdev;
 
 CREATE TABLE `accounts` (
   `account_id` int(4) NOT NULL,
@@ -53,6 +48,27 @@ INSERT INTO `accounts` (`account_id`, `username`, `password`, `firstname`, `last
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `community_posts`
+--
+
+CREATE TABLE `community_posts` (
+  `post_id` int(11) NOT NULL,
+  `user_id` int(4) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `community_posts`
+--
+
+INSERT INTO `community_posts` (`post_id`, `user_id`, `title`, `content`, `created_at`) VALUES
+(1, 2, 'test', 'test', '2024-12-04 15:14:13');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
@@ -65,22 +81,6 @@ CREATE TABLE `orders` (
   `total_price` decimal(10,2) DEFAULT NULL,
   `payment_method` varchar(50) DEFAULT NULL,
   `order_date` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table tickets
--- 
-CREATE TABLE `tickets` (
-  `Ticket_ID` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  `Name` VARCHAR(100) NOT NULL,
-  `Email` VARCHAR(100) NOT NULL,
-  `Subject` VARCHAR(200) DEFAULT NULL,
-  `Message` TEXT NOT NULL,
-  `Status` ENUM('Open', 'In Progress', 'Closed') DEFAULT 'Open',
-  `Created_At` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -122,6 +122,22 @@ INSERT INTO `products` (`product_id`, `name`, `description`, `price`, `stock`, `
 (4, 'Kale Chips', 'A healthy, crunchy snack made from organic kale, lightly seasoned.', 4.79, 30, 'Snacks'),
 (5, 'Protein Powder', 'Plant-based protein powder, perfect for post-workout recovery.', 19.99, 25, 'Supplements');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tickets`
+--
+
+CREATE TABLE `tickets` (
+  `Ticket_ID` bigint(20) UNSIGNED NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `Subject` varchar(200) DEFAULT NULL,
+  `Message` text NOT NULL,
+  `Status` enum('Open','In Progress','Closed') DEFAULT 'Open',
+  `Created_At` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -131,6 +147,13 @@ INSERT INTO `products` (`product_id`, `name`, `description`, `price`, `stock`, `
 --
 ALTER TABLE `accounts`
   ADD PRIMARY KEY (`account_id`);
+
+--
+-- Indexes for table `community_posts`
+--
+ALTER TABLE `community_posts`
+  ADD PRIMARY KEY (`post_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `orders`
@@ -153,6 +176,12 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`);
 
 --
+-- Indexes for table `tickets`
+--
+ALTER TABLE `tickets`
+  ADD PRIMARY KEY (`Ticket_ID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -161,6 +190,12 @@ ALTER TABLE `products`
 --
 ALTER TABLE `accounts`
   MODIFY `account_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `community_posts`
+--
+ALTER TABLE `community_posts`
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -181,8 +216,20 @@ ALTER TABLE `products`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `tickets`
+--
+ALTER TABLE `tickets`
+  MODIFY `Ticket_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `community_posts`
+--
+ALTER TABLE `community_posts`
+  ADD CONSTRAINT `community_posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `accounts` (`account_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `order_items`
