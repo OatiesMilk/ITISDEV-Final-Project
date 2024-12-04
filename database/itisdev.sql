@@ -26,6 +26,11 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `accounts`
 --
+-- Create the database if it doesn’t exist
+CREATE DATABASE IF NOT EXISTS itisdev;
+
+-- Select the database to use
+USE itisdev;
 
 CREATE TABLE `accounts` (
   `account_id` int(4) NOT NULL,
