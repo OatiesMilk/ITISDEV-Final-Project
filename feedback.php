@@ -55,6 +55,11 @@ $conn->close();
         <div class="alert alert-danger"><?php echo $error_message; ?></div>
     <?php endif; ?>
 
+    <!-- Go back to main menu button -->
+    <div class="mb-5">
+        <a href="main_menu.php" class="btn btn-primary">Go Back to Main Menu</a>
+    </div>
+
     <!-- Feedback form -->
     <div class="feedback-form mb-5">
         <h2 class="h4">We value your feedback!</h2>

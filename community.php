@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 $title = "Community";
 include('config.php');
 include('dependencies/header.php');
@@ -58,6 +57,11 @@ $conn->close();
     <?php elseif (isset($error_message)): ?>
         <div class="alert alert-danger"><?php echo $error_message; ?></div>
     <?php endif; ?>
+
+    <!-- Go back to main menu button -->
+    <div class="mb-5">
+        <a href="main_menu.php" class="btn btn-primary">Go Back to Main Menu</a>
+    </div>
 
     <!-- Form to create a new post -->
     <div class="mb-5">
