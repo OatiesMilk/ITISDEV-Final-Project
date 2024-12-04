@@ -128,19 +128,20 @@ CREATE TABLE `products` (
   `description` text DEFAULT NULL,
   `price` decimal(10,2) NOT NULL,
   `stock` int(11) NOT NULL,
-  `category` varchar(64) DEFAULT NULL
+  `category` varchar(64) DEFAULT NULL,
+  `image_name` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `name`, `description`, `price`, `stock`, `category`) VALUES
-(1, 'Almond Butter', 'Smooth and creamy almond butter, made with roasted almonds.', 8.99, 50, 'Nut Butter'),
-(2, 'Organic Granola', 'A crunchy blend of oats, nuts, and dried fruits, perfect for breakfast or a snack.', 5.49, 100, 'Snacks'),
-(3, 'Chia Seeds', 'High-quality chia seeds, great for smoothies, salads, or baked goods.', 3.99, 75, 'Superfoods'),
-(4, 'Kale Chips', 'A healthy, crunchy snack made from organic kale, lightly seasoned.', 4.79, 30, 'Snacks'),
-(5, 'Protein Powder', 'Plant-based protein powder, perfect for post-workout recovery.', 19.99, 25, 'Supplements');
+INSERT INTO `products` (`product_id`, `name`, `description`, `price`, `stock`, `category`, `image_name`) VALUES
+(1, 'Almond Butter', 'Smooth and creamy almond butter, made with roasted almonds.', 8.99, 50, 'Nut Butter', 'almond_butter.jpg'),
+(2, 'Organic Granola', 'A crunchy blend of oats, nuts, and dried fruits, perfect for breakfast or a snack.', 5.49, 100, 'Snacks', 'organic_granola.jpg'),
+(3, 'Chia Seeds', 'High-quality chia seeds, great for smoothies, salads, or baked goods.', 3.99, 75, 'Superfoods', 'chia_seeds.jpg'),
+(4, 'Kale Chips', 'A healthy, crunchy snack made from organic kale, lightly seasoned.', 4.79, 30, 'Snacks', 'kale_chips.jpeg'),
+(5, 'Protein Powder', 'Plant-based protein powder, perfect for post-workout recovery.', 19.99, 25, 'Supplements', 'protein_powder.jpeg');
 
 -- --------------------------------------------------------
 

@@ -36,12 +36,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-footer {
-    font-size: 0.9rem;
-    background-color: #6D4C41;
-    color: #fff;
-}
-
 form input, form textarea {
     border-radius: 5px;
     border: 1px solid #ccc;

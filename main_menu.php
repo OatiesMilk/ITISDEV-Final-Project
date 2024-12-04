@@ -31,10 +31,6 @@
     <p>&copy; 2024 goNuts - All Rights Reserved. Crafted with love for health and wellness.</p>
 </footer>
 
-<?php
-
-?>
-
 <!-- End of Main Menu -->
 
 </body>
