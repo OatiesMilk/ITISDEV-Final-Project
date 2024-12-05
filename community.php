@@ -8,8 +8,8 @@ include('dependencies/header.php');
 // Handle form submission for creating a new post
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_post'])) {
     // Check if the user is logged in
-    if (isset($_SESSION['user_id'])) {
-        $user_id = $_SESSION['user_id']; // Get the user ID from the session
+    if (isset($_SESSION['account_id'])) {
+        $user_id = $_SESSION['account_id']; // Get the user ID from the session
         $title = $conn->real_escape_string($_POST['title']);
         $content = $conn->real_escape_string($_POST['content']);
 

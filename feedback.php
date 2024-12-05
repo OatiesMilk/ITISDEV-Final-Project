@@ -7,8 +7,8 @@ $title = "Feedback Page";
 
 // Handle feedback submission
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_feedback'])) {
-    if (isset($_SESSION['user_id'])) {
-        $user_id = $_SESSION['user_id']; // Get user ID from session
+    if (isset($_SESSION['account_id'])) {
+        $user_id = $_SESSION['account_id']; // Get user ID from session
         $feedback_message = $conn->real_escape_string($_POST['feedback_message']);
 
         // Insert feedback into database

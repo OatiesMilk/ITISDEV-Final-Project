@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Assign the necessary session variables
         $_SESSION['firstname'] = $user['firstname'];
         $_SESSION['lastname'] = $user['lastname'];
-        $_SESSION['user_id'] = $user['account_id']; // Corrected variable name to match community.php
+        $_SESSION['account_id'] = $user['account_id'];
         $_SESSION['email'] = $user['email'];
         $_SESSION['mobile_num'] = $user['mobile_num'];
         
