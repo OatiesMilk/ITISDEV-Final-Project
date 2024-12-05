@@ -2,9 +2,6 @@
 session_start();
 include('config.php');
 
-// Proceed with checkout logic
-// Here, you would typically process payment, shipping, and finalize the order.
-
 // Initialize total price
 $total_price = 0;
 
