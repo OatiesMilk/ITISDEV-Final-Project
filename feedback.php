@@ -48,7 +48,7 @@ $conn->close();
 <body>
 
 <div class="container mt-5">
-    <h1 class="text-center text-uppercase text-primary mb-4">Submit Your Feedback</h1>
+    <h1 class="text-center text-uppercase text-primary mb-4">Submit A Feedback</h1>
 
     <!-- Display success or error messages -->
     <?php if (isset($success_message)): ?>
@@ -67,7 +67,6 @@ $conn->close();
         <h2 class="h4">We value your feedback!</h2>
         <form method="POST" action="">
             <div class="mb-3">
-                <label for="feedback_message" class="form-label">Your Feedback</label>
                 <textarea id="feedback_message" name="feedback_message" class="form-control" rows="5" placeholder="Tell us what you think!" required></textarea>
             </div>
 
