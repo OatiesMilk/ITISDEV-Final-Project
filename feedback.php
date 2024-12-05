@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+$title = "Feedback";
 include('config.php');
 include('dependencies/header.php');
 
