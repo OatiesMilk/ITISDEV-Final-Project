@@ -64,7 +64,7 @@ CREATE TABLE `community_posts` (
 --
 
 INSERT INTO `community_posts` (`post_id`, `user_id`, `title`, `content`, `created_at`) VALUES
-(1, 2, 'test', 'test', '2024-12-04 15:14:13');
+(1, 2, 'Title (testing)', 'Content: community post 1', '2024-12-04 15:14:13');
 
 -- --------------------------------------------------------
 
@@ -101,19 +101,6 @@ CREATE TABLE `orders` (
   `total_price` decimal(10,2) DEFAULT NULL,
   `payment_method` varchar(50) DEFAULT NULL,
   `order_date` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order_items`
---
-
-CREATE TABLE `order_items` (
-  `item_id` int(11) NOT NULL,
-  `order_id` int(11) DEFAULT NULL,
-  `product_id` int(11) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
